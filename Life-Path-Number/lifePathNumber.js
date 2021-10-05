@@ -42,3 +42,18 @@ function lifePathNumber(dateOfBirth) {
     }
     return lifenum
 }
+
+function calc(num) {
+    let sum = 0;
+
+    sum = num.split('').map(function (a) {
+        return parseInt(a, 10);
+    });
+
+    return sum
+}
+
+
+function sum(x) {
+    return calc(x).reduce((a, b) => a + b)
+}
