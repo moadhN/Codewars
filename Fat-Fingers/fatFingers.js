@@ -2,13 +2,14 @@
 function fatFingers(str) {
     if (str == null) return null;
     if (str == 'undefined') return null;
-    if (str == '') return null;
+    if (str == '') return '';
     let shiftPress;
+    let firstLetter = str.match(/[a-zA-Z]/).join('');
 
-    str[0] === str[0].toUpperCase() ? shiftPress = true : shiftPress = false
+    firstLetter === firstLetter.toUpperCase() ? shiftPress = true : shiftPress = false
 
-    const strArray = str.replace(/([a-z](?=[A-Z])|[A-Z](?=[a-z]))/g, '$1+')
-
+    //const strArray = str.replace(/([a-z](?=[A-Z])|[A-Z](?=[a-z]))/g, '$1+')
+    const strArray = str.replace(/([a-z](?=[A-Z])|[A-Z](?=[a-z])|[a-z][0-9]+(?=[A-Z])|[A-Z][0-9]+(?=[a-z]))/g, '$1+')
     let result = '';
 
     for (let i of strArray) {
