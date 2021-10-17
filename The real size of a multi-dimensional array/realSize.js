@@ -11,4 +11,9 @@ function realSize(arrays) {
     }
     return count;
 }
+/* -------------------------------------------------------------------------------------------------------- */
+
+
+const realSize = arr => arr.reduce((a, e) => a + (Array.isArray(e) ? realSize(e) : 1), 0);
+
 
