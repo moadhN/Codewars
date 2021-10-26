@@ -12,3 +12,4 @@ const number = function (array) {
     }
     return finalArray
 }
+
