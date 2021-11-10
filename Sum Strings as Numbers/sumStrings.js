@@ -1,23 +1,41 @@
 function sumStrings(a, b) {
-    //const result = Number(a) + Number(b)
-    //console.log(Number(a).toPrecision(99))
-    //console.log(Number(b).toPrecision(99))
-
-    //return result.toExponential()
+    a = a.replace(/^0+/, '')
+    b = b.replace(/^0+/, '')
     const rversA = a.split('').reverse().join('');
     const rversB = b.split('').reverse().join('');
-    const sameArray = [rversA, rversB]
     let rest = 0;
     let finalresult = ''
-    for (let i = 0; (i < (rversA.length > rversB.length ? rversA : rversB)); i++) {
+    let lng = rversA.length > rversB.length ? rversA.length : rversB.length
+    for (let i = 0; i < lng; i++) {
         const aNumber = rversA[i] || 0
         const bNumber = rversB[i] || 0
+        const sum = Number(aNumber) + Number(bNumber) + rest;
 
+        rest = Math.trunc(sum / 10);
+        finalresult += (sum % 10) + ""
+
+        if (i + 1 === lng && rest != 0) {
+            finalresult += rest + ""
+        }
     }
 
-    //return finalresult
+    return finalresult.split('').reverse().join('')
 }
-console.log(sumStrings("712569312664357328695151392", "8100824045303269669937"))//712577413488402631964821329
-/*    const sum = Number(i)+Number(j)+rest
-        rest = Math.trunc(sum)
-        finalresult += (sum % 10) + '' */
+/* -------------------------------------------------------------------------------------------------------------------------------- */
+
+function sumStrings(a, b) {
+    return (BigInt(a) + BigInt(b)).toString()
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
