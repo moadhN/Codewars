@@ -17,7 +17,7 @@ const RomanNumerals = {
     60: 'LX',
     70: 'LXX',
     80: 'LXXX',
-    90: 'LC',
+    90: 'XC',
     100: 'C',
     200: 'CC',
     300: 'CCC',
@@ -30,8 +30,24 @@ const RomanNumerals = {
     1000: 'M',
     2000: 'MM',
     3000: 'MMM',
+
+    'I': 1,
+    'IV': 4,
+    'V': 5,
+    'IX': 9,
+    'X': 10,
+    'XL': 40,
+    'L': 50,
+    'XC': 90,
+    'C': 100,
+    'CD': 400,
+    'D': 500,
+    'CM': 900,
+    'M': 1000,
+
+
+
     toRoman: function (number) {
-        console.log(number)
         let currentNumber = number;
         const thousands = Math.floor(currentNumber / 1000)
         currentNumber = number - (thousands * 1000)
@@ -41,5 +57,8 @@ const RomanNumerals = {
         currentNumber = currentNumber - (tens * 10)
         const single = currentNumber
         return `${this[thousands * 1000]}${this[hundreds * 100]}${this[tens * 10]}${this[single]}`
+    },
+    fromRoman: function (number) {
+        return number.match(/(IV)|(IX)|(XL)|(XC)|(CM)|(CD)|(\w)/g).map(el => RomanNumerals[el]).reduce((a, b) => a + Number(b), 0)
     }
 }
