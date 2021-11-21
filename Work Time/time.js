@@ -2,8 +2,6 @@ function workTime(b, a) {
     const minA = a.split(':').reduce((a, b) => Number(a) * 60 + Number(b))
     const minB = b.split(':').reduce((a, b) => Number(a) * 60 + Number(b))
     const sum = minA - minB
-    const hours = (sum / 60).toFixed()
-    const min = (sum % 60)
     return sum
 }
 let sum =
